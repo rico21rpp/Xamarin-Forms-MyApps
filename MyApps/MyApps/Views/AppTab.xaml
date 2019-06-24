@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:MyApps.Views"
+            xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+            prism:ViewModelLocator.AutowireViewModel="True"
+            x:Class="MyApps.Views.AppTab"
+            BarBackgroundColor="#FFFFFF"
+            SelectedTabColor="#7F8C8D">
+    <local:HomePage IconImageSource="home.png" />
+    <local:LoginPage IconImageSource="menu.png" />
+    <ContentPage IconImageSource="heart.png">
+        <Label Text="HEART" VerticalOptions="Center" HorizontalOptions="Center" />
+    </ContentPage>
+    <ContentPage IconImageSource="profile.png">
+        <Label Text="PROFILE" VerticalOptions="Center" HorizontalOptions="Center" />
+    </ContentPage>
+</TabbedPage>

@@ -6,9 +6,9 @@ using System.Linq;
 
 namespace MyApps.ViewModels
 {
-	public class PrismTabbedPage1ViewModel : BindableBase
+	public class AppTabViewModel : BindableBase
 	{
-        public PrismTabbedPage1ViewModel()
+        public AppTabViewModel()
         {
 
         }

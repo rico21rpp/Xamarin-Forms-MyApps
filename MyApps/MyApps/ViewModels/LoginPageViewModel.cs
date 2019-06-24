@@ -55,7 +55,7 @@ namespace MyApps.ViewModels
             {
                 if (account.Username == uname && account.Password == pass)
                 {
-                    await _navigationService.NavigateAsync("/HomePage");
+                    await _navigationService.NavigateAsync("/AppTab");
                 }
                 else
                 {
