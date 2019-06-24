@@ -36,7 +36,8 @@
                         CornerRadius="45"
                         FontSize="18"
                         FontAttributes="Bold"
-                        HorizontalOptions="FillAndExpand"/>
+                        HorizontalOptions="FillAndExpand"
+                        Command="{Binding LoginCommand}"/>
                 <Label Text="Forgot password?"
                        FontSize="14"
                        TextColor="#7F8C8D"
