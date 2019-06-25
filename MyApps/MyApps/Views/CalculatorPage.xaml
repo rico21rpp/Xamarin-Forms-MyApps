@@ -8,21 +8,29 @@
         <Frame AbsoluteLayout.LayoutBounds="0,-0.1,1,0.4"
                AbsoluteLayout.LayoutFlags="All"
                BackgroundColor="#3498DB"
-               CornerRadius="20">
-            <AbsoluteLayout>
-                <Label AbsoluteLayout.LayoutBounds="1,0.1,1,0.5"
-                       AbsoluteLayout.LayoutFlags="All" 
-                       Text="80 x 2" 
-                       FontSize="24" 
-                       TextColor="#FFFFFF" 
-                       FontAttributes="Bold" />
-                <Label AbsoluteLayout.LayoutBounds="1,1,1,0.5"
-                       AbsoluteLayout.LayoutFlags="All" 
-                       Text="160" 
+               CornerRadius="20"
+               Padding="40,80,40,40">
+            <StackLayout>
+                <StackLayout HorizontalOptions="EndAndExpand"
+                             VerticalOptions="Start">
+                    <Label HorizontalOptions="EndAndExpand"
+                       VerticalOptions="Center"
+                       Text="80 x 2 x 1.000.000 + 50.000" 
                        FontSize="36" 
                        TextColor="#FFFFFF" 
                        FontAttributes="Bold" />
-            </AbsoluteLayout>
+                </StackLayout>
+                <StackLayout HorizontalOptions="EndAndExpand"
+                             VerticalOptions="EndAndExpand">
+                    <Label HorizontalOptions="EndAndExpand"
+                       VerticalOptions="Center"
+                       Text="= 16.050.000" 
+                       FontSize="64" 
+                       TextColor="#FFFFFF" 
+                       FontAttributes="Bold" />
+                </StackLayout>
+                
+            </StackLayout>
         </Frame>
         <Grid AbsoluteLayout.LayoutBounds="0,1,1,0.65"
               AbsoluteLayout.LayoutFlags="All"
