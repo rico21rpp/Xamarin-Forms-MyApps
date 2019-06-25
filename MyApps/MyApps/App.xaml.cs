@@ -22,8 +22,8 @@ namespace MyApps
         protected override async void OnInitialized()
         {
             InitializeComponent();
-
-            await NavigationService.NavigateAsync("LoginPage");
+            await NavigationService.NavigateAsync("CalculatorPage");
+            //await NavigationService.NavigateAsync("LoginPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -33,6 +33,7 @@ namespace MyApps
             containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
             containerRegistry.RegisterForNavigation<HomePage, HomePageViewModel>();
             containerRegistry.RegisterForNavigation<AppTab, AppTabViewModel>();
+            containerRegistry.RegisterForNavigation<CalculatorPage, CalculatorPageViewModel>();
         }
     }
 }
