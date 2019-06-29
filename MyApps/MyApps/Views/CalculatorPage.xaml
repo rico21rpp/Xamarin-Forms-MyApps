@@ -15,7 +15,7 @@
                              VerticalOptions="Start">
                     <Label HorizontalOptions="EndAndExpand"
                        VerticalOptions="Center"
-                       Text="80 x 2 x 1.000.000 + 50.000" 
+                       Text="{Binding HistoryNum}" 
                        FontSize="36" 
                        TextColor="#FFFFFF" 
                        FontAttributes="Bold" />
@@ -24,12 +24,11 @@
                              VerticalOptions="EndAndExpand">
                     <Label HorizontalOptions="EndAndExpand"
                        VerticalOptions="Center"
-                       Text="= 16.050.000" 
+                       Text="{Binding DynamicNum}" 
                        FontSize="64" 
                        TextColor="#FFFFFF" 
                        FontAttributes="Bold" />
                 </StackLayout>
-                
             </StackLayout>
         </Frame>
         <Grid AbsoluteLayout.LayoutBounds="0,1,1,0.65"
