@@ -30,6 +30,10 @@ namespace MyApps.ViewModels
         public DelegateCommand OnBtnDelClickedCommand =>
             _onBtnDelClickedCommand ?? (_onBtnDelClickedCommand = new DelegateCommand(onBtnDelClicked));
 
+        private DelegateCommand _onBtnTotalClickedCommand;
+        public DelegateCommand OnBtnTotalClickedCommand =>
+            _onBtnTotalClickedCommand ?? (_onBtnTotalClickedCommand = new DelegateCommand(onBtnTotalClicked));
+
         private DelegateCommand<string> _onBtnNumClickedCommand;
         public DelegateCommand<string> OnBtnNumClickedCommand =>
             _onBtnNumClickedCommand ?? (_onBtnNumClickedCommand = new DelegateCommand<string>((num) =>
@@ -66,6 +70,29 @@ namespace MyApps.ViewModels
                     int len = DynamicNum.Length;
                     DynamicNum = DynamicNum.Substring(0, len - 1);
                 }
+            }
+        }
+
+        private async void onBtnTotalClicked()
+        {
+            if (!_isTotalCounted && HistoryNum != "" && DynamicNum != "0")
+            {
+                string[] historyNumSplitted = HistoryNum.Split(' ');
+                string lastOpr = historyNumSplitted[historyNumSplitted.Length - 1];
+                double dynamicNum = double.Parse(DynamicNum);
+
+                if (lastOpr == "+")
+                    _amount += dynamicNum;
+                else if (lastOpr == "-")
+                    _amount -= dynamicNum;
+                else if (lastOpr == "x")
+                    _amount *= dynamicNum;
+                else if (lastOpr == "/")
+                    _amount /= dynamicNum;
+
+                HistoryNum = HistoryNum + " " + DynamicNum + " = " + _amount;
+                DynamicNum = "= " + _amount;
+                _isTotalCounted = true;
             }
         }
 
