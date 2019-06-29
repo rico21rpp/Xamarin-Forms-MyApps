@@ -7,8 +7,8 @@ using System.Linq;
 
 namespace MyApps.ViewModels
 {
-	public class CalculatorPageViewModel : ViewModelBase
-	{
+    public class CalculatorPageViewModel : ViewModelBase
+    {
         private double _amount;
         private bool _isOprClicked;
         private bool _isTotalCounted;
@@ -33,6 +33,13 @@ namespace MyApps.ViewModels
         private DelegateCommand _onBtnTotalClickedCommand;
         public DelegateCommand OnBtnTotalClickedCommand =>
             _onBtnTotalClickedCommand ?? (_onBtnTotalClickedCommand = new DelegateCommand(onBtnTotalClicked));
+
+        private DelegateCommand<string> _onBtnOprClickedCommand;
+        public DelegateCommand<string> OnBtnOprClickedCommand =>
+            _onBtnOprClickedCommand ?? (_onBtnOprClickedCommand = new DelegateCommand<string>((opr) =>
+            {
+                onBtnOprClicked(opr);
+            }));
 
         private DelegateCommand<string> _onBtnNumClickedCommand;
         public DelegateCommand<string> OnBtnNumClickedCommand =>
@@ -73,27 +80,52 @@ namespace MyApps.ViewModels
             }
         }
 
+        private void calculate()
+        {
+            string[] historyNumSplitted = HistoryNum.Split(' ');
+            string lastOpr = historyNumSplitted[historyNumSplitted.Length - 1];
+            double dynamicNum = double.Parse(DynamicNum);
+
+            if (lastOpr == "+")
+                _amount += dynamicNum;
+            else if (lastOpr == "-")
+                _amount -= dynamicNum;
+            else if (lastOpr == "x")
+                _amount *= dynamicNum;
+            else if (lastOpr == "/")
+                _amount /= dynamicNum;
+        }
+
         private async void onBtnTotalClicked()
         {
             if (!_isTotalCounted && HistoryNum != "" && DynamicNum != "0")
             {
-                string[] historyNumSplitted = HistoryNum.Split(' ');
-                string lastOpr = historyNumSplitted[historyNumSplitted.Length - 1];
-                double dynamicNum = double.Parse(DynamicNum);
-
-                if (lastOpr == "+")
-                    _amount += dynamicNum;
-                else if (lastOpr == "-")
-                    _amount -= dynamicNum;
-                else if (lastOpr == "x")
-                    _amount *= dynamicNum;
-                else if (lastOpr == "/")
-                    _amount /= dynamicNum;
-
+                calculate();
                 HistoryNum = HistoryNum + " " + DynamicNum + " = " + _amount;
                 DynamicNum = "= " + _amount;
                 _isTotalCounted = true;
             }
+        }
+
+        private async void onBtnOprClicked(string opr)
+        {
+            clearTotal();
+
+            if (HistoryNum == "")
+            {
+                if (DynamicNum != "0")
+                {
+                    HistoryNum = DynamicNum + " " + opr;
+                    _amount = double.Parse(DynamicNum);
+                }
+            }
+            else
+            {
+                calculate();
+                HistoryNum = HistoryNum + " " + DynamicNum + " " + opr;
+                DynamicNum = _amount + "";
+            }
+            _isOprClicked = true;
         }
 
         private async void OnBtnNumClicked(string num)
