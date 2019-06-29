@@ -26,6 +26,10 @@ namespace MyApps.ViewModels
         public DelegateCommand OnBtnClearClickedCommand =>
             _onBtnClearClickedCommand ?? (_onBtnClearClickedCommand = new DelegateCommand(onBtnClearClicked));
 
+        private DelegateCommand _onBtnDelClickedCommand;
+        public DelegateCommand OnBtnDelClickedCommand =>
+            _onBtnDelClickedCommand ?? (_onBtnDelClickedCommand = new DelegateCommand(onBtnDelClicked));
+
         private DelegateCommand<string> _onBtnNumClickedCommand;
         public DelegateCommand<string> OnBtnNumClickedCommand =>
             _onBtnNumClickedCommand ?? (_onBtnNumClickedCommand = new DelegateCommand<string>((num) =>
@@ -47,6 +51,21 @@ namespace MyApps.ViewModels
             {
                 onBtnClearClicked();
                 onBtnClearClicked();
+            }
+        }
+
+
+        private async void onBtnDelClicked()
+        {
+            if (!_isTotalCounted && DynamicNum != "0")
+            {
+                if (DynamicNum.Length == 1)
+                    DynamicNum = "0";
+                else
+                {
+                    int len = DynamicNum.Length;
+                    DynamicNum = DynamicNum.Substring(0, len - 1);
+                }
             }
         }
 
