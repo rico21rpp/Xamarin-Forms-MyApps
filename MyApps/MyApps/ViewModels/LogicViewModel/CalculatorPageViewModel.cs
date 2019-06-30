@@ -68,8 +68,17 @@ namespace MyApps.ViewModels
                 Debug.WriteLine("888888 num: " + num);
             }));
 
+        private DelegateCommand _onBtnClearAllClickedCommand;
+        public DelegateCommand OnBtnClearAllClickedCommand =>
+            _onBtnClearAllClickedCommand ?? (_onBtnClearAllClickedCommand = new DelegateCommand(OnBtnClearAllClicked));
+
 
         private async void onBtnClearClicked()
+        {
+            DynamicNum = "0";
+        }
+
+        private async void OnBtnClearAllClicked()
         {
             DynamicNum = "0";
             HistoryNum = "";
@@ -80,7 +89,7 @@ namespace MyApps.ViewModels
         {
             if (_isTotalCounted)
             {
-                onBtnClearClicked();
+                OnBtnClearAllClicked();
                 _isTotalCounted = false;
             }
         }
