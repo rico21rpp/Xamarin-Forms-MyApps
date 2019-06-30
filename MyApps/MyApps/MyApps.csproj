@@ -32,8 +32,4 @@
     </EmbeddedResource>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ViewModels\LogicViewModel\" />
-  </ItemGroup>
-
 </Project>

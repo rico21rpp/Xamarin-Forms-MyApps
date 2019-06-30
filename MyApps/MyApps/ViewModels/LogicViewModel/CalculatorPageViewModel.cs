@@ -45,7 +45,7 @@ namespace MyApps.ViewModels
         public DelegateCommand<string> OnBtnNumClickedCommand =>
             _onBtnNumClickedCommand ?? (_onBtnNumClickedCommand = new DelegateCommand<string>((num) =>
             {
-
+                OnBtnNumClicked(num);
             }));
 
 
@@ -130,7 +130,28 @@ namespace MyApps.ViewModels
 
         private async void OnBtnNumClicked(string num)
         {
+            clearTotal();
 
+            if (HistoryNum == "")
+                updateDynamicNum(num);
+            else
+            {
+                if (_isOprClicked)
+                {
+                    DynamicNum = num;
+                    _isOprClicked = false;
+                }
+                else
+                    updateDynamicNum(num);
+            }
+        }
+
+        private void updateDynamicNum(string num)
+        {
+            if (DynamicNum == "0")
+                DynamicNum = num;
+            else
+                DynamicNum = DynamicNum + num;
         }
 	}
 }
