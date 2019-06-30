@@ -5,10 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Icons\delete.png" />
     <None Remove="Icons\logo.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Icons\delete.png" />
     <EmbeddedResource Include="Icons\logo.png" />
   </ItemGroup>
 

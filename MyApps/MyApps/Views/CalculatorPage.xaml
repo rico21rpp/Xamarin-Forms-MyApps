@@ -16,9 +16,8 @@
                     <Label HorizontalOptions="EndAndExpand"
                        VerticalOptions="Center"
                        Text="{Binding HistoryNum}" 
-                       FontSize="36" 
-                       TextColor="#FFFFFF" 
-                       FontAttributes="Bold" />
+                       FontSize="24" 
+                       TextColor="#FFFFFF"  />
                 </StackLayout>
                 <StackLayout HorizontalOptions="EndAndExpand"
                              VerticalOptions="EndAndExpand">
@@ -26,8 +25,7 @@
                        VerticalOptions="Center"
                        Text="{Binding DynamicNum}" 
                        FontSize="48" 
-                       TextColor="#FFFFFF" 
-                       FontAttributes="Bold" />
+                       TextColor="#FFFFFF" />
                 </StackLayout>
             </StackLayout>
         </Frame>
@@ -75,7 +73,7 @@
             <!-- Row 4 -->
             <Button Grid.Row="4" Text="0" BackgroundColor="#E5E5E5" TextColor="Black" FontSize="24" FontAttributes="Bold" CornerRadius="20" Margin="3" Command="{Binding OnBtnNumClickedCommand}" CommandParameter="0" />
             <Button Grid.Row="4" Grid.Column="1" Text="." BackgroundColor="#E5E5E5" FontSize="24" FontAttributes="Bold" TextColor="Black" CornerRadius="20" Margin="3" />
-            <Button Grid.Row="4" Grid.Column="2" Text="--" BackgroundColor="#3498DB" FontSize="24" FontAttributes="Bold" TextColor="#FFFFFF" CornerRadius="20" Margin="3" Command="{Binding OnBtnDelClickedCommand}" />
+            <Button Grid.Row="4" Grid.Column="2" ImageSource="{Binding DeleteImg}" BackgroundColor="#3498DB" FontSize="24" FontAttributes="Bold" TextColor="#FFFFFF" CornerRadius="20" Margin="3" Command="{Binding OnBtnDelClickedCommand}" />
             <Button Grid.Row="4" Grid.Column="3" Text="=" BackgroundColor="#F39C12" FontSize="24" FontAttributes="Bold" TextColor="#FFFFFF" CornerRadius="20" Margin="3" Command="{Binding OnBtnTotalClickedCommand}" />
         </Grid>
     </AbsoluteLayout>

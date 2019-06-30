@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using Xamarin.Forms;
 
 namespace MyApps.ViewModels
 {
@@ -15,6 +16,11 @@ namespace MyApps.ViewModels
         private bool _isTotalCounted;
         private string _historyNum;
         private string _dynamicNum;
+
+        public ImageSource DeleteImg
+        {
+            get { return ImageSource.FromResource("MyApps.Icons.delete.png"); }
+        }
 
         public string HistoryNum
         {
