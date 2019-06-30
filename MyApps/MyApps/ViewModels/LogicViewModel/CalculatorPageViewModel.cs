@@ -3,6 +3,7 @@ using Prism.Mvvm;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace MyApps.ViewModels
@@ -12,13 +13,24 @@ namespace MyApps.ViewModels
         private double _amount;
         private bool _isOprClicked;
         private bool _isTotalCounted;
+        private string _historyNum;
+        private string _dynamicNum;
 
-        public string HistoryNum { get; set; }
-        public string DynamicNum { get; set; }
+        public string HistoryNum
+        {
+            get { return _historyNum; }
+            set { SetProperty(ref _historyNum, value); }
+        }
+        public string DynamicNum
+        {
+            get { return _dynamicNum; }
+            set { SetProperty(ref _dynamicNum, value); }
+        }
 
         public CalculatorPageViewModel(INavigationService navigationService) : base(navigationService)
         {
-
+            HistoryNum = "";
+            DynamicNum = "0";
         }
 
 
@@ -39,6 +51,7 @@ namespace MyApps.ViewModels
             _onBtnOprClickedCommand ?? (_onBtnOprClickedCommand = new DelegateCommand<string>((opr) =>
             {
                 onBtnOprClicked(opr);
+                Debug.WriteLine("888888 opr: " + opr);
             }));
 
         private DelegateCommand<string> _onBtnNumClickedCommand;
@@ -46,6 +59,7 @@ namespace MyApps.ViewModels
             _onBtnNumClickedCommand ?? (_onBtnNumClickedCommand = new DelegateCommand<string>((num) =>
             {
                 OnBtnNumClicked(num);
+                Debug.WriteLine("888888 num: " + num);
             }));
 
 
@@ -61,7 +75,7 @@ namespace MyApps.ViewModels
             if (_isTotalCounted)
             {
                 onBtnClearClicked();
-                onBtnClearClicked();
+                _isTotalCounted = false;
             }
         }
 
